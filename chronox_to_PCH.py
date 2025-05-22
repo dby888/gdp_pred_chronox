@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.ticker import MaxNLocator
 import seaborn as sns
+import visualization_part
 sns.set_theme(style='whitegrid')
 
 def load_country_data(country, target_subject, start_year, end_year, truth_file):
@@ -191,25 +192,9 @@ def plot_results(country, target_subject, start_year, end_year, truth_file):
     plt.close()
 
     # 3️⃣ 预测 vs 真实值
-    plt.figure(figsize=(10, 6))
-    plt.plot(years, forecast_with_growth, marker='o', markersize=10, linewidth=2, linestyle='-', color='blue',
-             label='Chronos with NFCI')
-    plt.plot(years, forecast_without_growth, marker='o', markersize=10, linewidth=2, linestyle='-', color='cyan',
-             label='Chronos without NFCI')
-    plt.plot(years, organism_growth, marker='x', markersize=10, linewidth=2, linestyle='-', color='grey',
-             label='WEO')
-    plt.plot(years, truth_growth, marker='s', markersize=10, linewidth=2, linestyle='-', color='green', label='Truth')
-
-    plt.xlabel('Forecast Year', fontsize=14)
-    plt.ylabel('Growth Rate (%)', fontsize=14)
-    plt.title(f'{target_subject}_PCH Prediction Comparison for {country}', fontsize=16)
-    plt.legend(frameon=True, fontsize=12, loc='best')
-    plt.grid(color='gray', linestyle='--', linewidth=0.5)
-    plt.gca().xaxis.set_major_locator(MaxNLocator(integer=True))
-    plt.tick_params(axis='both', which='major', labelsize=12)
-    plt.tight_layout()
-    plt.savefig(os.path.join(save_dir, f'{target_subject}_PCH_RESULT.png'), dpi=400)
-    plt.close()
+    save_path = os.path.join(save_dir, f'{target_subject}_PCH_RESULT.png')
+    visualization_part.draw_line_chart(forecast_with_growth, forecast_without_growth, organism_growth, truth_growth, years,
+                                       save_path, country)
 
     # 保存 CSV
     data = {
