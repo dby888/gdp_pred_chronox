@@ -190,9 +190,9 @@ def plot_results(country, target_subject, start_year, end_year, truth_file):
     plt.close()
 
     # 折线图
-    save_path = os.path.join(save_dir, f'{target_subject}_NGDP_RPCH_RESULT.png')
+    save_path = os.path.join(save_dir, f'NGDP_RPCH_RESULT.png')
     visualization_part.draw_line_chart(forecast_with_growth, forecast_without_growth, organism_growth, truth_growth,
-                                       years, save_path, country)
+                                       years, save_path, country, "NGDP_RPCH")
 
     # 保存 CSV
     data = {

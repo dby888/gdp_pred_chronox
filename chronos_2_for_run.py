@@ -489,13 +489,12 @@ def plot_results(country, target_subject, start_year, end_year, horizon, truth_f
 if __name__ == "__main__":
     countries = ['CHN', 'CAN', 'FRA', 'ITA', 'DEU', 'JPN', 'GBR', 'USA', 'SGP']
     # countries = ['SGP']
-    countries = ['USA']
+    # countries = ['USA']
     target_subject = 'NGDP_R'
     # target_subject = 'NGDP'
     # target_subject = 'NGDP_RPCH'
-    target_subject_list = ['NGDP','NGDP_RPCH','NGDP_R']
-    target_subject_list = ['NGDP_R']
-    target_subject_list = ['NGDP']
+    # target_subject_list = ['NGDP','NGDP_RPCH','NGDP_R']
+    target_subject_list = ['NGDP','NGDP_RPCH']
     # target_subject_list = ["BCA_NGDPD","LUR","PCPIPCH"]
     start_year = 2008
     end_year = 2025
@@ -503,7 +502,7 @@ if __name__ == "__main__":
 
     for target_subject in target_subject_list:
         for country in countries:
-            cov_tensor_dict = prepare_covariates_full(start_year, end_year, country)
+            # cov_tensor_dict = prepare_covariates_full(start_year, end_year, country)
             cov_tensor_dict = prepare_covariates(start_year, end_year, country)
             run_forecast(country, target_subject, start_year, end_year, truth_file, cov_tensor_dict)
 

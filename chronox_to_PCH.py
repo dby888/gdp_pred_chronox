@@ -193,8 +193,8 @@ def plot_results(country, target_subject, start_year, end_year, truth_file):
 
     # 3️⃣ 预测 vs 真实值
     save_path = os.path.join(save_dir, f'{target_subject}_PCH_RESULT.png')
-    visualization_part.draw_line_chart(forecast_with_growth, forecast_without_growth, organism_growth, truth_growth, years,
-                                       save_path, country)
+    visualization_part.draw_line_chart(forecast_with_growth, forecast_without_growth, organism_growth, truth_growth,
+                                       years, save_path, country, target_subject+"_PCH")
 
     # 保存 CSV
     data = {
