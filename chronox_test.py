@@ -259,10 +259,7 @@ def prepare_covariates(start_year, end_year, country):
         if year >= start_year:
             stacked = torch.tensor(np.array(rows, dtype=np.float32))
             cov_tensor_dict[year] = stacked
-    # for year in range(start_year, end_year+1):
-    #     cov_values = [nfci_yearly.get(y, np.nan) for y in range(start_year, year + 1)]
-    #     cov_tensor = torch.tensor(cov_values, dtype=torch.float32).unsqueeze(-1)
-    #     cov_tensor_dict[year] = cov_tensor
+
     return cov_tensor_dict
     # return None
 
@@ -490,9 +487,6 @@ if __name__ == "__main__":
     countries = ['CHN', 'CAN', 'FRA', 'ITA', 'DEU', 'JPN', 'GBR', 'USA', 'SGP']
     # countries = ['SGP']
     countries = ['USA']
-    target_subject = 'NGDP_R'
-    # target_subject = 'NGDP'
-    # target_subject = 'NGDP_RPCH'
     target_subject_list = ['NGDP','NGDP_RPCH','NGDP_R']
     target_subject_list = ['NGDP_R']
     target_subject_list = ['NGDP']
